@@ -1,7 +1,7 @@
 (ns metro.components.web.views
   (:require [ring.util.response :as ring-resp]
             [hiccup.page :as hp]
-            [metro.components.web.articles :as articles]))
+            [metro.components.web.articles :as article]))
 
 (defn- toggle-todo-view [todo]
   [:form#toggle-todo {:action "/todo/toggle" :method :POST}
@@ -11,11 +11,11 @@
             :value "Toggle"}]])
 
 (defn- articles->rows []
-  (for [todo (sort-by :title (articles/query-all))]
+  (for [article (sort-by :title (article/query-all))]
     [:tr
-     [:td (:title todo)]
-     [:td (if (:done todo) "✅" "❌")]
-     [:td (toggle-todo-view todo)]]))
+     [:td (:title article)]
+     [:td (if (> (:count article) 0) "✅" "❌")]
+     [:td (toggle-todo-view article)]]))
 
 ;; -----------------------------------------------------------------------------
 
@@ -73,19 +73,19 @@
     (vec (conj (articles->rows) :tbody))]))
 
 (defn inc-article [{:keys [form-params]}]
-  (articles/inc! form-params)
+  (article/inc! form-params)
   (ring-resp/redirect "/"))
 
 (defn dec-article [{:keys [form-params]}]
-  (articles/dec! form-params)
+  (article/dec! form-params)
   (ring-resp/redirect "/"))
 
 (defn add-article [{:keys [form-params]}]
-  (article/add! (:title form-params) (:image form-params) (:count form-params))
+  (article/add! (:title form-params) (:image form-params) (:count form-params)))
 
-  (defn toggle-todo [{:keys [form-params]}]
-    (articles/toggle! (:id form-params))
-    (ring-resp/redirect "/"))
+(defn toggle-todo [{:keys [form-params]}]
+  (article/toggle! (:id form-params))
+  (ring-resp/redirect "/"))
 
-  (defn respond-hello [request]
-    {:status 200 :body "Hello, world!"}))
+(defn respond-hello [request]
+  {:status 200 :body "Hello, world!"})
