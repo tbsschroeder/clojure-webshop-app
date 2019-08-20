@@ -39,9 +39,4 @@
 (comment
   (def mysystem (component/start (system {})))
   (component/stop mysystem)
-
-
-
   mysystem)
-
-

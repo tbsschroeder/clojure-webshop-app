@@ -1,7 +1,7 @@
 (ns metro.components.db.postgres
   (:require [com.stuartsierra.component :as component]
             [korma.db :as kdb]
-            [metro.components.web.articles :as articles]))
+            [metro.components.db.articles :as articles]))
 
 (defrecord Postgres [db-config database]
   component/Lifecycle
