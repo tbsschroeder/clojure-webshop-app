@@ -16,8 +16,7 @@
     [:input {:class "btn btn-sm btn-danger"
              :type  :submit
              :value "➖"
-             :style "float: right"}]]
-   ])
+             :style "float: right"}]]])
 
 (defn- articles->rows []
   (for [article (sort-by :title (article/query-all))]
@@ -51,7 +50,7 @@
   (ring-resp/response
    (hp/html5
     [:head
-     [:title "Todo-Application"]
+     [:title "Webshop"]
      [:meta {:charset "utf-8"}]
      [:meta {:http-equiv "X-UA-Compatible"
              :content    "IE=edge"}]
@@ -64,7 +63,7 @@
 
 (defn home-page [request]
   (base-template
-   [:h1.center "Amazing WebShop Application"]
+   [:h1.center "Amazing Web Shop Application"]
    ;[:form#add-todo {:action "/article/add" :method :POST}
    ;
    ; [:div.form-group
@@ -115,9 +114,6 @@
 (defn dec-article [{:keys [form-params]}]
   (article/dec! (:id form-params))
   (ring-resp/redirect "/"))
-
-(defn add-article [{:keys [form-params]}]
-  (article/add! (:title form-params) (:image form-params) (:count form-params)))
 
 (defn respond-hello [request]
   {:status 200 :body "Hello, world!"})

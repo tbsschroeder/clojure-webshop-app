@@ -6,7 +6,7 @@
             [metro.system :as system]
             [metro.components.web.routes :as routes]
             [korma.db :as kdb]
-            [metro.components.web.articles :as articles]))
+            [metro.components.db.articles :as articles]))
 
 (defrecord TestDB [db-config database]
   component/Lifecycle
@@ -55,10 +55,10 @@
         (is (= "Hello, world!" body))))))
 
 (deftest add-todo-test
-  (testing "Greeting route should print typical hello world."
+  (testing "Add an article fo the db"
     (with-system [sut test-system]
       (let [sum-total-articles (count (articles/query-all))]
-        (articles/add! "foo")
+        (articles/add! "foo" "description" "img-path" 0)
         (is (= (inc sum-total-articles) (count (articles/query-all))))))))
 
 (comment
