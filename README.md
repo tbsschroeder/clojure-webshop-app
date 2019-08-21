@@ -1,7 +1,9 @@
 # WebShop Application with Component
 
-This repository provides a small web-application consisting of a
-pedestal-service and a database connection to persist items. These two components are composed in a system with Stuart Sierra's [Component](https://github.com/stuartsierra/component) library. The repo is based on [n2o's ToDo app](https://github.com/n2o/component-todo-app) 
+This repository provides a small web-application consisting of a pedestal-service 
+and a database connection to persist items. These two components are composed in 
+a system with Stuart Sierra's [Component](https://github.com/stuartsierra/component) 
+library. The repo is based on [n2o's ToDo app](https://github.com/n2o/component-todo-app) 
 
 ## Usage
 
@@ -22,15 +24,25 @@ There are two sample tests, which can be run with
 
     lein test
 
+### Helper
+
+You can run multiple helping tools like code formatting, linting, dependency 
+checker and code  analyzer via
+
+    lein clfmt fix
+    lein eastwood
+    lein ancient upgrade :interactive
+    lein kibit
+
 ## Demo
 
-![sample](img/todo.png)
+![sample](img/shop.png)
 
 ## License
 
 The MIT License (MIT)
 
-Copyright © 2019 Tobias Schröder
+Copyright © 2019 Dr. Tobias Schröder
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in

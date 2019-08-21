@@ -58,7 +58,7 @@
   (testing "Add an article fo the db"
     (with-system [sut test-system]
       (let [sum-total-articles (count (articles/query-all))]
-        (articles/add! "foo" "description" "img-path" 0)
+        (articles/add! "foo" "description" "category" "img-path" 0)
         (is (= (inc sum-total-articles) (count (articles/query-all))))))))
 
 (comment
