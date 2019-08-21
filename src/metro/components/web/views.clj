@@ -22,27 +22,27 @@
 
 (defn home-page [request]
   (base-template
-    [:h1.center "Amazing Web Shop Application"]
-    (blocks/checkout-btn)
-    [:hr {:style "margin: 2rem 0"}]
-    [:div.row.center {:style "margin: 0; padding-left: 1em;"}
-     (vec (conj (blocks/article->big-cards) :tbody))]))
+   [:h1.center "Amazing Web Shop Application"]
+   (blocks/checkout-btn)
+   [:hr {:style "margin: 2rem 0"}]
+   [:div.row.center {:style "margin: 0; padding-left: 1em;"}
+    (vec (conj (blocks/article->big-cards) :tbody))]))
 
 (defn checkout [request]
   (base-template
-    [:h1.center "Checkout"]
-    (if (article/has-articles-with-data?)
-      [:table.table.table-striped.table-hover {:font-size ""}
-       [:thead
-        [:tr
-         [:th {:width "20%"} "Category"]
-         [:th {:width "50%"} "Article"]
-         [:th {:width "10%"} "Image"]
-         [:th {:width "10%"} "Count"]
-         [:th {:width "10%"} "Remove"]]]
-       (vec (conj (blocks/article->checkout) :tbody))]
-      [:h4.text-warning "Empty shopping cart"])
-    (blocks/buy-more-btn)))
+   [:h1.center "Checkout"]
+   (if (article/has-articles-with-data?)
+     [:table.table.table-striped.table-hover {:font-size ""}
+      [:thead
+       [:tr
+        [:th {:width "20%"} "Category"]
+        [:th {:width "50%"} "Article"]
+        [:th {:width "10%"} "Image"]
+        [:th {:width "10%"} "Count"]
+        [:th {:width "10%"} "Remove"]]]
+      (vec (conj (blocks/article->checkout) :tbody))]
+     [:h4.text-warning "Empty shopping cart"])
+   (blocks/buy-more-btn)))
 
 (defn inc-article [{:keys [form-params]}]
   (article/inc! (:id form-params))

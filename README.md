@@ -29,7 +29,7 @@ There are two sample tests, which can be run with
 You can run multiple helping tools like code formatting, linting, dependency 
 checker and code  analyzer via
 
-    lein clfmt fix
+    lein cljfmt fix
     lein eastwood
     lein ancient upgrade :interactive
     lein kibit

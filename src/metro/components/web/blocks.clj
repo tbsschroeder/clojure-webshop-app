@@ -1,6 +1,6 @@
 (ns metro.components.web.blocks
   (:require
-    [metro.components.db.articles :as article]))
+   [metro.components.db.articles :as article]))
 
 (defn- article-btn [action id class value]
   [:form#count-article {:action action
@@ -36,8 +36,7 @@
      [:div.card-body
       [:p.card-text (:description article)]
       [:a.card-link {:href "#"} "More"]
-      (count-input article)]
-     ]))
+      (count-input article)]]))
 
 (defn article->small-cards []
   (for [article (sort-by :title (article/query-all))]
@@ -46,8 +45,7 @@
      [:div.card-body
       [:p.card-text (:description article)]
       [:img {:src (:image article) :style "height: 4em; float: left"}]
-      (count-input article)]])
-  )
+      (count-input article)]]))
 
 (defn article->checkout []
   (for [article (sort-by (juxt :category :title) (article/query-all-with-count))]
@@ -56,8 +54,7 @@
      [:td (:title article)]
      [:td [:img {:src (:image article) :style "height: 2em"}]]
      [:td [:strong {:class "text-warning"} (:count article)]]
-     [:td (article-btn "/article/rem" (:id article) "btn-warning btn-sm" "✘")]])
-  )
+     [:td (article-btn "/article/rem" (:id article) "btn-warning btn-sm" "✘")]]))
 
 (defn checkout-btn []
   [:a.btn.btn-success

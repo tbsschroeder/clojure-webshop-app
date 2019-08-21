@@ -28,8 +28,7 @@
   (kc/exec-raw (format "UPDATE articles SET count = count - 1 WHERE id = %s" id)))
 
 (defn rem! [id]
-  (kc/exec-raw (format "UPDATE articles SET count = 0 WHERE id = %s" id))
-  )
+  (kc/exec-raw (format "UPDATE articles SET count = 0 WHERE id = %s" id)))
 
 (defn query-all []
   (kc/select article))
