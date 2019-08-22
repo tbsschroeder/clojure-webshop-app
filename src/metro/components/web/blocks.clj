@@ -15,6 +15,7 @@
              :content "width=device-width, initial-scale=1"}]
      [:link {:rel "icon" :href "img/shopping-cart.svg"}]
      (hp/include-css "css/bootstrap.min.css")
+     (hp/include-css "css/custom.css")
      (hp/include-css "css/cat.css")]
     [:body
      [:div.container {:style "padding-top: 3rem"}
@@ -31,26 +32,24 @@
             :value value}]])
 
 (defn- count-input [article]
-  [:div.form-group {:style "width: 10em!important; float: right; margin-top: 0.7em;"}
+  [:div.form-group.count-input
    [:div.input-group
     [:div.input-group-prepend
      (article-btn "/article/dec" (:id article) "btn-danger" "➖")]
     [:input.form-control.input-number {:value (:count article)
                                        :width "3em"
-                                       :disabled "true"
-                                       :style "text-align: center"}]
+                                       :disabled "true"}]
     [:div.input-group-append
      (article-btn "/article/inc" (:id article) "btn-success" "➕")]]])
 
 (defn article->big-cards []
   (for [article (sort-by :title (article/query-all))]
-    [:div.card.mb-3 {:style "max-width: 31%; margin: 0.5rem;"}
+    [:div.card.mb-3
      [:h3.card-header (:title article)]
      [:div.card-body
       [:h6.card-subtitle.text-muted (:category article)]]
-     [:img {:style "width: 100%; display: block;"
-            :src (:image article)
-            :alt "article image"}]
+     [:img.big {:src (:image article)
+                :alt "article image"}]
      [:div.card-body
       [:p.card-text (:description article)]
       [:a.card-link {:href "#"} "More"]
@@ -58,11 +57,11 @@
 
 (defn article->small-cards []
   (for [article (sort-by :title (article/query-all))]
-    [:div.card.text-white.bg-secondary.mb-3 {:style "max-width: 31%; margin: 0.5rem;"}
+    [:div.card.text-white.bg-secondary.mb-3
      [:div.card-header [:h4 (:title article)]]
      [:div.card-body
       [:p.card-text (:description article)]
-      [:img {:src (:image article) :style "height: 4em; float: left"}]
+      [:img.small {:src (:image article)}]
       (count-input article)]]))
 
 (defn article->checkout []
@@ -70,28 +69,24 @@
     [:tr
      [:td (:category article)]
      [:td (:title article)]
-     [:td [:img {:src (:image article) :style "height: 2em"}]]
+     [:td [:img.co-img {:src (:image article)}]]
      [:td [:strong {:class "text-warning"} (:count article)]]
      [:td (article-btn "/article/rem" (:id article) "btn-warning btn-sm" "✘")]]))
 
 (defn checkout-btn []
-  [:a.btn.btn-success
+  [:a.btn.btn-success.co-btn
    {:type "button"
-    :style "position: fixed; top: 0; right: 0;"
     :href "/checkout"}
-   [:img {:src "img/shopping-cart.svg"
-          :alt "cart"
-          :style "margin-right: 0.5em; filter: invert(100%); height: 1em"}]
+   [:img.co-btn-img {:src "img/shopping-cart.svg"
+                     :alt "cart"}]
    (str "Checkout (" (count (article/query-all-with-count)) ")")])
 
 (defn buy-more-btn []
-  [:a.btn.btn-success
+  [:a.btn.btn-success.buy-more-btn
    {:type "button"
-    :style "float: right"
     :href "/"}
-   [:img {:src "img/shopping-cart.svg"
-          :alt "cart"
-          :style "margin-right: 0.5em; filter: invert(100%); height: 1em"}]
+   [:img.buy-more-btn-img {:src "img/shopping-cart.svg"
+                           :alt "cart"}]
    "Buy More"])
 
 (defn cat []
