@@ -37,7 +37,10 @@
   (kc/select article (kc/where (> :count 0))))
 
 (defn has-articles-with-data? []
-  (> (reduce + (map #(get % :count) (query-all-with-count))) 0))
+  (pos? (reduce + (map #(get % :count) (query-all-with-count)))))
+
+(defn has-data? []
+  (pos? (count (query-all))))
 
 (defn create-table! []
   (drop-table!)

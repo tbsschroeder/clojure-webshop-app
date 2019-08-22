@@ -3,7 +3,7 @@
   :url "http://example.com/FIXME"
   :license {:name "MIT"
             :url "https://opensource.org/licenses/MIT"}
-  :dependencies [[org.clojure/clojure "1.9.0"]
+  :dependencies [[org.clojure/clojure "1.10.1"]
                  [com.stuartsierra/component "0.4.0"]
 
                  ;; html in clojure

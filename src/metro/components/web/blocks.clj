@@ -1,6 +1,24 @@
 (ns metro.components.web.blocks
-  (:require
-   [metro.components.db.articles :as article]))
+  (:require  [metro.components.db.articles :as article]
+             [ring.util.response :as ring-resp]
+             [hiccup.page :as hp]))
+
+(defn base-template [& body]
+  (ring-resp/response
+   (hp/html5
+    [:head
+     [:title "Webshop"]
+     [:meta {:charset "utf-8"}]
+     [:meta {:http-equiv "X-UA-Compatible"
+             :content    "IE=edge"}]
+     [:meta {:name    "viewport"
+             :content "width=device-width, initial-scale=1"}]
+     [:link {:rel "icon" :href "img/shopping-cart.svg"}]
+     (hp/include-css "css/bootstrap.min.css")
+     (hp/include-css "css/cat.css")]
+    [:body
+     [:div.container {:style "padding-top: 3rem"}
+      body]])))
 
 (defn- article-btn [action id class value]
   [:form#count-article {:action action
@@ -75,3 +93,32 @@
           :alt "cart"
           :style "margin-right: 0.5em; filter: invert(100%); height: 1em"}]
    "Buy More"])
+
+(defn cat []
+  [:div.cat
+   [:div.head
+    [:div.face
+     [:div.stripes
+      [:div.top]
+      [:div.left]
+      [:div.right]]
+     [:div.eyes
+      [:div.left]
+      [:div.right]]
+     [:div.nose]
+     [:div.mouth]]
+    [:div.ears
+     [:div.left]
+     [:div.right]]]
+   [:div.suit
+    [:div.collar
+     [:div.top]]
+    [:div.arms
+     [:div.left]
+     [:div.right]]
+    [:div.paws
+     [:div.left]
+     [:div.right]]
+    [:div.body]]
+   [:div.tail]
+   [:div.shadow]])
