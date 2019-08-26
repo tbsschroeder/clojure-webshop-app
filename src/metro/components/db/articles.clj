@@ -21,6 +21,9 @@
 (defn delete! [id]
   (kc/delete article (kc/where {:id id})))
 
+(defn get-count! [id]
+  (kc/select article (kc/fields :count) (kc/where {:id id})))
+
 (defn inc! [id]
   (kc/exec-raw (format "UPDATE articles SET count = count + 1 WHERE id = %s" id)))
 
@@ -42,9 +45,11 @@
 (defn has-data? []
   (pos? (count (query-all))))
 
-(defn create-table! []
+(defn create-table! [is-testing]
   (drop-table!)
-  (kc/exec-raw "CREATE TABLE IF NOT EXISTS articles(id SERIAL, title TEXT NOT NULL, description TEXT NOT NULL, category TEXT NOT NULL, image TEXT NOT NULL, count INTEGER DEFAULT 0 NOT NULL)")
+  (if is-testing
+    (kc/exec-raw "CREATE TABLE IF NOT EXISTS articles(id INTEGER PRIMARY KEY, title TEXT NOT NULL, description TEXT NOT NULL, category TEXT NOT NULL, image TEXT NOT NULL, count INTEGER DEFAULT 0 NOT NULL)")
+    (kc/exec-raw "CREATE TABLE IF NOT EXISTS articles(id SERIAL, title TEXT NOT NULL, description TEXT NOT NULL, category TEXT NOT NULL, image TEXT NOT NULL, count INTEGER DEFAULT 0 NOT NULL)"))
   (add! "Apples"
         "An apple is a sweet, edible fruit produced by an apple tree (Malus domestica). Apple trees are cultivated worldwide and are the most widely grown species in the genus Malus. "
         "Fruit"
@@ -97,7 +102,7 @@
         0))
 
 (comment
-  (create-table!)
+  (create-table! false)
   (add! "deleteme" "deleteit" "deletenow" 0)
   (delete! 10)
   (clear-table!))

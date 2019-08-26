@@ -8,7 +8,7 @@
   (start [this]
     (let [db (kdb/create-db (kdb/postgres db-config))]
       (kdb/default-connection db)
-      (articles/create-table!)
+      (articles/create-table! false)
       (assoc this :database db)))
   (stop [this]
     (kdb/default-connection nil)

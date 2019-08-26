@@ -89,7 +89,7 @@
                            :alt "cart"}]
    "Buy More"])
 
-(defn cat []
+(defn 🐱 []
   [:div.cat
    [:div.head
     [:div.face

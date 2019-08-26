@@ -26,7 +26,7 @@
       (vec (conj (blocks/article->checkout) :tbody))]
      [:div
       [:h2.text-warning "Empty shopping cart! Manager cart is not amused!"]
-      (blocks/cat)])
+      (blocks/🐱)])
    (blocks/buy-more-btn)))
 
 (defn inc-article [{:keys [form-params]}]
