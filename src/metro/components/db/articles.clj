@@ -61,7 +61,7 @@
         "img/apricotes.jpeg"
         0)
   (add! "Banana"
-        "A banana is an edible fruit (botanically a berry) produced by several kinds of large herbaceous flowering plants in the genus Musa. Bananas used for cooking called plantain in some countries."
+        "A banana is an edible fruit (botanically a berry) produced by several kinds of large herbaceous flowering plants in the genus Musa."
         "Fruit"
         "img/banana.jpeg"
         0)
@@ -91,7 +91,7 @@
         "img/rum.jpeg"
         0)
   (add! "Salt"
-        "Salt is a mineral composed primarily of sodium chloride, a chemical compound belonging to the larger class of salts; salt in its natural form is known as rock salt or halite. "
+        "Salt is a mineral composed primarily of sodium chloride, a chemical compound belonging to the larger class of salts; salt in its natural form is known as rock salt."
         "Spice"
         "img/salt.jpeg"
         0)
