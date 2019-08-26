@@ -4,8 +4,8 @@
             [metro.components.db.articles :as articles]
             [metro.system-test :as test]))
 
-(defn- get-first []
-  (first (articles/query-all)))
+(defn- get-first-count []
+  (:count (first (articles/query-all))))
 
 (deftest article-tests
   (test/with-system
@@ -20,30 +20,28 @@
         (is (= (inc sum-total-articles)
                (count (articles/query-all))))))
 
-    ;(testing "Increase an articles count in the db"
-    ;  (let [count-article (:count (get-first))]
-    ;    (articles/inc! 0)
-    ;    (is (= (inc count-article) (:count (get-first))))
-    ;  ))
-    ;
-    ;(testing "Decrease an articles count in the db"
-    ;  (let [count-article (:count (get-get-first))]
-    ;    (articles/dec! 0)
-    ;    (is (= (dec count-article)
-    ;           (:count (get-get-first))))))
-    ;
-    ;(testing "Set articles count to 0"
-    ;  (let [count-article (:count (get-first))]
-    ;    (articles/inc! 0)
-    ;    (is (< count-article
-    ;           (:count (get-first))))
-    ;    (articles/rem! 0)
-    ;    (is (= count-article
-    ;           (:count (get-first))))))
-    ;
-    ;(testing "Remove an article in the db"
-    ;  (let [count-article (:count (get-first-latest))]
-    ;    (articles/delete! 0)
-    ;    (is (= (dec count-article)
-    ;           (count (articles/query-all))))))
-    ))
+    (testing "Increase an articles count in the db"
+      (let [count-article (get-first-count)]
+        (articles/inc! 1)
+        (is (= (inc count-article) (get-first-count)))))
+
+    (testing "Decrease an articles count in the db"
+      (let [count-article (get-first-count)]
+        (articles/dec! 1)
+        (is (= (dec count-article)
+               (get-first-count)))))
+
+    (testing "Set articles count to 0"
+      (let [count-article (get-first-count)]
+        (articles/inc! 1)
+        (is (< count-article
+               (get-first-count)))
+        (articles/rem! 1)
+        (is (= count-article
+               (get-first-count)))))
+
+    (testing "Remove an article in the db"
+      (let [sum-total-articles (count (articles/query-all))]
+        (articles/delete! 1)
+        (is (= (dec sum-total-articles)
+               (count (articles/query-all))))))))
