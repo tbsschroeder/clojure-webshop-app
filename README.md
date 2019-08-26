@@ -36,7 +36,7 @@ checker and code  analyzer via
 
 ## Demo
 
-![sample](img/shop.png)
+![sample](img/demo.png)
 
 ## License
 
