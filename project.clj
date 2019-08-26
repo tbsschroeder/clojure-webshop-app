@@ -10,7 +10,7 @@
                  [hiccup "1.0.5"]
 
                  ;; database
-                 [org.clojure/java.jdbc "0.7.9"]
+                 [org.clojure/java.jdbc "0.7.10"]
                  [org.postgresql/postgresql "42.2.6"]
                  [org.xerial/sqlite-jdbc "3.28.0"]
                  [korma "0.4.3"]
