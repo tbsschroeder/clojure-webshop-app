@@ -3,10 +3,10 @@
             [metro.components.db.articles :as article]
             [metro.components.web.blocks :as blocks]))
 
-(defn home-page [request]
+(defn shop [request]
   (blocks/base-template
    [:h1.center "Amazing Web Shop Application"]
-   (blocks/checkout-btn)
+   (blocks/button->checkout)
    [:hr {:style "margin: 2rem 0"}]
    [:div.row.center {:style "margin: 0; padding-left: 1em;"}
     (vec (conj (blocks/article->big-cards) :tbody))]))
@@ -14,20 +14,8 @@
 (defn checkout [request]
   (blocks/base-template
    [:h1.center "Checkout"]
-   (if (article/has-articles-with-data?)
-     [:table.table.table-striped.table-hover {:font-size ""}
-      [:thead
-       [:tr
-        [:th {:width "20%"} "Category"]
-        [:th {:width "50%"} "Article"]
-        [:th {:width "10%"} "Image"]
-        [:th {:width "10%"} "Count"]
-        [:th {:width "10%"} "Remove"]]]
-      (vec (conj (blocks/article->checkout) :tbody))]
-     [:div
-      [:h2.text-warning "Empty shopping cart! Manager cart is not amused!"]
-      (blocks/🐱)])
-   (blocks/buy-more-btn)))
+   (blocks/checkout-table)
+   (blocks/button->buy-more)))
 
 (defn inc-article [{:keys [form-params]}]
   (article/inc! (:id form-params))

@@ -29,8 +29,8 @@ div.card.mb-3 img.small {
 
 .co-btn {
     position: fixed;
-    top: 0;
-    right: 0;
+    top: 1em;
+    right: 1em;
 }
 
 .co-btn-img {

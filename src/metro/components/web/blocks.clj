@@ -42,6 +42,35 @@
     [:div.input-group-append
      (article-btn "/article/inc" (:id article) "btn-success" "➕")]]])
 
+(defn- 🐱 []
+  [:div.cat
+   [:div.head
+    [:div.face
+     [:div.stripes
+      [:div.top]
+      [:div.left]
+      [:div.right]]
+     [:div.eyes
+      [:div.left]
+      [:div.right]]
+     [:div.nose]
+     [:div.mouth]]
+    [:div.ears
+     [:div.left]
+     [:div.right]]]
+   [:div.suit
+    [:div.collar
+     [:div.top]]
+    [:div.arms
+     [:div.left]
+     [:div.right]]
+    [:div.paws
+     [:div.left]
+     [:div.right]]
+    [:div.body]]
+   [:div.tail]
+   [:div.shadow]])
+
 (defn article->big-cards []
   (for [article (sort-by :title (article/query-all))]
     [:div.card.mb-3
@@ -73,7 +102,22 @@
      [:td [:strong {:class "text-warning"} (:count article)]]
      [:td (article-btn "/article/rem" (:id article) "btn-warning btn-sm" "✘")]]))
 
-(defn checkout-btn []
+(defn checkout-table []
+  (if (article/has-articles-with-data?)
+    [:table.table.table-striped.table-hover {:font-size ""}
+     [:thead
+      [:tr
+       [:th "Category"]
+       [:th "Article"]
+       [:th "Image"]
+       [:th "Count"]
+       [:th "Remove"]]]
+     (vec (conj (article->checkout) :tbody))]
+    [:div
+     [:h2.text-warning "Empty shopping cart! Manager cat is not amused!"]
+     (🐱)]))
+
+(defn button->checkout []
   [:a.btn.btn-success.co-btn
    {:type "button"
     :href "/checkout"}
@@ -81,39 +125,10 @@
                      :alt "cart"}]
    (str "Checkout (" (count (article/query-all-with-count)) ")")])
 
-(defn buy-more-btn []
+(defn button->buy-more []
   [:a.btn.btn-success.buy-more-btn
    {:type "button"
     :href "/"}
    [:img.buy-more-btn-img {:src "img/shopping-cart.svg"
                            :alt "cart"}]
    "Buy More"])
-
-(defn 🐱 []
-  [:div.cat
-   [:div.head
-    [:div.face
-     [:div.stripes
-      [:div.top]
-      [:div.left]
-      [:div.right]]
-     [:div.eyes
-      [:div.left]
-      [:div.right]]
-     [:div.nose]
-     [:div.mouth]]
-    [:div.ears
-     [:div.left]
-     [:div.right]]]
-   [:div.suit
-    [:div.collar
-     [:div.top]]
-    [:div.arms
-     [:div.left]
-     [:div.right]]
-    [:div.paws
-     [:div.left]
-     [:div.right]]
-    [:div.body]]
-   [:div.tail]
-   [:div.shadow]])

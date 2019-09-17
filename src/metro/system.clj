@@ -13,25 +13,21 @@
    ::http/resource-path "/public"
    ::http/join? false})
 
-(def db-config
-  {:db       "clojure"
-   :user     "clojure"
-   :password "clojure"})
-
 (defn system [env]
   (component/system-map
    :service-map (build-service-map env)
-   :db-config db-config
 
-   :db
-   (component/using
-    (postgres/new-database)
-    [:db-config])
+   :db-config {:db       "clojure"
+               :user     "clojure"
+               :password "clojure"}
 
-   :web
-   (component/using
-    (pedestal/new-pedestal)
-    [:db :service-map])))
+   :db (component/using
+        (postgres/new-database)
+        [:db-config])
+
+   :web (component/using
+         (pedestal/new-pedestal)
+         [:db :service-map])))
 
 (defn -main [& args]
   (component/start (system {})))
