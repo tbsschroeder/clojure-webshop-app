@@ -10,7 +10,7 @@ library. The repo is based on [n2o's ToDo app](https://github.com/n2o/component-
 The production code runs with a postgres-database. You can create a database
 with the correct settings with this command:
 
-    docker run --rm -e POSTGRES_PASSWORD=clojure -e POSTGRES_USER=clojure -e POSTGRES_DB=clojure -p 5432:5432 postgres:11-alpine
+    docker run --rm -e POSTGRES_PASSWORD=clojure -e POSTGRES_USER=clojure -e POSTGRES_DB=clojure -p 5432:5432 postgres:12-alpine
 
 Then start the system:
 
