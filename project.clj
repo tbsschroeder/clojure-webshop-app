@@ -2,28 +2,27 @@
   :description "FIXME: write description"
   :url "http://example.com/FIXME"
   :license {:name "MIT"
-            :url "https://opensource.org/licenses/MIT"}
+            :url "https://opensouArce.org/licenses/MIT"}
   :dependencies [[org.clojure/clojure "1.10.1"]
+
+                 ;; lifecycle
                  [com.stuartsierra/component "0.4.0"]
+
+                 ;; http abstraction
+                 [ring/ring-core "1.7.1"]
 
                  ;; html in clojure
                  [hiccup "1.0.5"]
 
                  ;; database
                  [org.clojure/java.jdbc "0.7.10"]
-                 [org.postgresql/postgresql "42.2.6"]
+                 [org.postgresql/postgresql "42.2.8"]
                  [org.xerial/sqlite-jdbc "3.28.0"]
                  [korma "0.4.3"]
 
                  ;; web server
                  [io.pedestal/pedestal.service "0.5.7"]
-                 [io.pedestal/pedestal.jetty "0.5.7"]
-
-                 ;; logging
-                 [ch.qos.logback/logback-classic "1.2.3" :exclusions [org.slf4j/slf4j-api]]
-                 [org.slf4j/jul-to-slf4j "1.7.28"]
-                 [org.slf4j/jcl-over-slf4j "1.7.28"]
-                 [org.slf4j/log4j-over-slf4j "1.7.28"]]
+                 [io.pedestal/pedestal.jetty "0.5.7"]]
   :min-lein-version "2.0.0"
   :resource-paths ["config", "resources"]
   :profiles {:uberjar {:aot [metro.server]}
