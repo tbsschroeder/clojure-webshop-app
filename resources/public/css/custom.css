@@ -1,3 +1,9 @@
+.center {
+    margin-left: auto!important;
+    margin-right: auto!important;
+    text-align: center!important;
+}
+
 .count-input {
     width: 10em !important;
     float: right;

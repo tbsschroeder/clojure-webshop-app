@@ -12,11 +12,11 @@
   (kc/delete article))
 
 (defn add! [title description category image count]
-  (kc/insert article (kc/values {:title title
+  (kc/insert article (kc/values {:title       title
                                  :description description
-                                 :category category
-                                 :image image
-                                 :count count})))
+                                 :category    category
+                                 :image       image
+                                 :count       count})))
 
 (defn delete! [id]
   (kc/delete article (kc/where {:id id})))
@@ -50,55 +50,55 @@
   (if is-testing
     (kc/exec-raw "CREATE TABLE IF NOT EXISTS articles(id INTEGER PRIMARY KEY, title TEXT NOT NULL, description TEXT NOT NULL, category TEXT NOT NULL, image TEXT NOT NULL, count INTEGER DEFAULT 0 NOT NULL)")
     (kc/exec-raw "CREATE TABLE IF NOT EXISTS articles(id SERIAL, title TEXT NOT NULL, description TEXT NOT NULL, category TEXT NOT NULL, image TEXT NOT NULL, count INTEGER DEFAULT 0 NOT NULL)"))
-  (add! "Apples"
-        "An apple is a sweet, edible fruit produced by an apple tree (Malus domestica). Apple trees are cultivated worldwide and are the most widely grown species in the genus Malus. "
-        "Fruit"
-        "img/apples.jpeg"
-        0)
-  (add! "Apricot"
-        "An apricot is a fruit, or the tree that bears the fruit, of several species in the genus Prunus (stone fruits). The apricot is a small tree, 8–12 m tall, with a trunk up to 40 cm."
-        "Fruit"
-        "img/apricotes.jpeg"
-        0)
-  (add! "Banana"
-        "A banana is an edible fruit (botanically a berry) produced by several kinds of large herbaceous flowering plants in the genus Musa."
-        "Fruit"
-        "img/banana.jpeg"
-        0)
-  (add! "Beef"
-        "Beef is the culinary name for meat from cattle, particularly skeletal muscle. Humans have been eating beef since prehistoric times. Beef is a source of high-quality protein and nutrients."
+  (add! "Bacon"
+        "Bacon is a type of salt-cured pork. Bacon is prepared from several different cuts of meat, typically from the pork belly or from back cuts, which have less fat than the belly. And it's delicious!"
         "Meat"
-        "img/beef.jpeg"
+        "img/products/bacon.jpg"
         0)
-  (add! "Ben & Jerrys"
-        "Ben & Jerry's Homemade Holdings Inc, trading and commonly known as Ben & Jerry's, is an American company that manufactures ice cream, frozen yogurt, and sorbet."
-        "Dessert"
-        "img/benjerrys.jpeg"
+  (add! "Crinkle Cut Fries"
+        "Crinkle-cutting is slicing that leaves a corrugated surface. This is done with corrugated knives or mandoline blades. Crinkle-cut potato chips are sometimes called ruffled."
+        "Potato Products "
+        "img/products/crinklefries.jpg"
         0)
-  (add! "Fish"
-        "Many species of fish are consumed as food in virtually all regions around the world. Fish has been an important source of protein and other nutrients for humans throughout history. "
-        "Meat"
-        "img/fish.jpeg"
+  (add! "Deep Frying Fat"
+        "Deep fat frying is a cooking method that can be used to cook food. The process involves submerging a food in extremely hot oil until it reaches a safe minimum internal temperature."
+        "Oil & Fat"
+        "img/products/fryingfat.jpg"
         0)
-  (add! "Pepper"
-        "Black pepper (Piper nigrum) is a flowering vine in the family Piperaceae, cultivated for its fruit, known as a peppercorn, which is usually dried and used as a spice and seasoning."
-        "Spice"
-        "img/pepper.jpeg"
+  (add! "Garlic"
+        "Garlic is a species in the onion genus. Its close relatives include the onion, shallot, leek, chive, and chinese onion. Garlic is native to central asia and ..."
+        "Vegetables"
+        "img/products/garlic.jpg"
         0)
-  (add! "Rum"
-        "Rum is a distilled alcoholic drink made from sugarcane byproducts, such as molasses, or directly from sugarcane juice, by a process of fermentation and distillation."
-        "Drinks"
-        "img/rum.jpeg"
+  (add! "Ice Cream"
+        "Ice cream is a sweetened frozen food typically eaten as a snack or dessert. It may be made from dairy milk or cream and is flavored with a sweetener and any spice."
+        "Sweets"
+        "img/products/icecream.jpg"
         0)
-  (add! "Salt"
-        "Salt is a mineral composed primarily of sodium chloride, a chemical compound belonging to the larger class of salts; salt in its natural form is known as rock salt."
-        "Spice"
-        "img/salt.jpeg"
+  (add! "Olive Oil"
+        "Olive oil is a liquid obtained from olives. The oil is produced by pressing whole olives. It is commonly used in cooking, whether for frying or as a salad dressing."
+        "Oil & Fat"
+        "img/products/oliveoil.jpg"
         0)
-  (add! "Water"
-        "Drinking water is water that is safe to drink or to use for food preparation. The amount of drinking water required to maintain good health varies, and depends on physical activity level ..."
-        "Drinks"
-        "img/water.jpeg"
+  (add! "Shrimps"
+        "Shrimp is shrimp and we do not care whether they are black tiger, white tiger or sea tiger. Just cook or grill them with a lot of garlic and, if you like, with a steak!"
+        "Fish"
+        "img/products/shrimps.jpg"
+        0)
+  (add! "Steakhouse Fries"
+        "Steakhouse fries offer an intense potato experience. Made from whole potatoes extra wide cut, they are especially potato and go perfectly with hearty meat dishes."
+        "Potato Products"
+        "img/products/steakhousefries.jpg"
+        0)
+  (add! "Sweet Potato Fries"
+        "Fried sweet potato features in a variety of dishes and cuisines including the popular sweet potato fries, a variation of French fries using sweet potato instead of potato."
+        "Potato Products"
+        "img/products/sweetpotatoefries.jpg"
+        0)
+  (add! "Tortilla Chips"
+        "A tortilla chip is a snack food made from corn tortillas, which are cut into wedges and then fried—or baked. Corn tortillas are made of corn, vegetable oil, salt and water."
+        "Snack"
+        "img/products/tortilla.jpg"
         0))
 
 (comment
