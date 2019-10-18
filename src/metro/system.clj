@@ -6,14 +6,15 @@
             [metro.components.db.postgres :as postgres]))
 
 (defn- build-service-map [env]
+  ;; Pedestals web server configuration (http://pedestal.io/reference/service-map).
   {:env env
    ::http/routes routes/routes
    ::http/type :jetty
    ::http/port 8080
-   ::http/resource-path "/public"
-   ::http/join? false})
+   ::http/resource-path "/public"})
 
 (defn system [env]
+  ;; Passing components to the main system
   (component/system-map
    :service-map (build-service-map env)
 
@@ -21,13 +22,9 @@
                :user     "clojure"
                :password "clojure"}
 
-   :db (component/using
-        (postgres/new-database)
-        [:db-config])
+   :db (component/using (postgres/new-database) [:db-config])
 
-   :web (component/using
-         (pedestal/new-pedestal)
-         [:db :service-map])))
+   :web (component/using (pedestal/new-pedestal) [:db :service-map])))
 
 (defn -main [& args]
   (component/start (system {})))

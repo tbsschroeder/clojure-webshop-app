@@ -4,15 +4,19 @@
             [metro.components.web.views :as views]
             [io.pedestal.http.route :as route]))
 
-(def common-interceptors [(body-params/body-params) http/html-body])
+(def common-interceptors
+  ;; Parsing the body parameters according to the request’s content-type header.
+  [(body-params/body-params) http/html-body])
 
 (def routes
-  #{["/" :get (conj common-interceptors `views/shop) :route-name :index]
-    ["/checkout" :get (conj common-interceptors `views/checkout) :route-name :checkout]
+  ;; Routes are a set of different rules.
+  #{["/"            :get  (conj common-interceptors `views/shop) :route-name :index]
+    ["/checkout"    :get  (conj common-interceptors `views/checkout) :route-name :checkout]
     ["/article/inc" :post (conj common-interceptors `views/inc-article) :route-name :inc-article]
     ["/article/dec" :post (conj common-interceptors `views/dec-article) :route-name :dec-article]
     ["/article/rem" :post (conj common-interceptors `views/rem-article) :route-name :rem-article]
-    ["/greet" :get views/respond-hello :route-name :greet]})
+    ["/greet"       :get  views/respond-hello :route-name :greet]})
 
-(def url-for (route/url-for-routes
-              (route/expand-routes routes)))
+(def url-for
+  ;; Helper function for unit tests
+  (route/url-for-routes (route/expand-routes routes)))
