@@ -5,13 +5,21 @@
 }
 
 .count-input {
-    width: 10em !important;
     float: right;
     margin-top: 0.7em;
 }
 
 .count-input .input-number {
     text-align: center;
+    width: 5em;
+}
+
+.amount-article-form .btn{
+    font-weight: 900;
+    color: white;
+    font-size: 1.5em;
+    line-height: 1em;
+    width: 2em;
 }
 
 div.card.mb-3 {

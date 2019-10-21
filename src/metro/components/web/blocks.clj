@@ -21,9 +21,9 @@
      [:div.container {:style "padding-top: 3rem"}
       body]])))
 
-(defn- article-btn [action id class value]
-  [:form#count-article {:action action
-                        :method :POST}
+(defn- amount-btn [action id class value]
+  [:form.amount-article-form {:action action
+                             :method :POST}
    [:input {:name "id"
             :value id
             :hidden true}]
@@ -31,16 +31,16 @@
             :type  :submit
             :value value}]])
 
-(defn- count-input [article]
+(defn- amount-input [article]
   [:div.form-group.count-input
    [:div.input-group
     [:div.input-group-prepend
-     (article-btn "/article/dec" (:id article) "btn-danger" "➖")]
+     (amount-btn "/article/dec" (:id article) "btn-danger" "-")]
     [:input.form-control.input-number {:value (:count article)
                                        :width "3em"
                                        :disabled "true"}]
     [:div.input-group-append
-     (article-btn "/article/inc" (:id article) "btn-success" "➕")]]])
+     (amount-btn "/article/inc" (:id article) "btn-success" "+")]]])
 
 (defn- 🐱 []
   [:div.cat
@@ -82,7 +82,7 @@
      [:div.card-body
       [:p.card-text (:description article)]
       [:a.card-link {:href "#"} "More"]
-      (count-input article)]]))
+      (amount-input article)]]))
 
 (defn article->small-cards []
   (for [article (sort-by :title (article/query-all))]
@@ -91,7 +91,7 @@
      [:div.card-body
       [:p.card-text (:description article)]
       [:img.small {:src (:image article)}]
-      (count-input article)]]))
+      (amount-input article)]]))
 
 (defn article->checkout []
   (for [article (sort-by (juxt :category :title) (article/query-all-with-count))]
@@ -100,7 +100,7 @@
      [:td (:title article)]
      [:td [:img.co-img {:src (:image article)}]]
      [:td [:strong {:class "text-warning"} (:count article)]]
-     [:td (article-btn "/article/rem" (:id article) "btn-warning btn-sm" "✘")]]))
+     [:td (amount-btn "/article/rem" (:id article) "btn-warning btn-sm" "✘")]]))
 
 (defn checkout-table []
   (if (article/has-articles-with-data?)

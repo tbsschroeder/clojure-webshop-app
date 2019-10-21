@@ -25,7 +25,7 @@
                  [io.pedestal/pedestal.jetty "0.5.7"]]
   :min-lein-version "2.0.0"
   :resource-paths ["config", "resources"]
-  :profiles {:uberjar {:aot [metro.server]}
+  :profiles {:uberjar {:aot :all}
              :dev     {:dependencies [[io.pedestal/pedestal.service-tools "0.5.7"]]
                        :plugins      [[lein-kibit "0.1.6"]  ; static code analyzer
                                       [lein-ancient "0.6.15"] ; dependency checker
@@ -33,5 +33,5 @@
                                       [jonase/eastwood "0.2.9"] ; lint tool
                                       ]}}
   :target-path "target/%s"
-  :main ^{:skip-aot true} metro.system
+  :main ^{:skip-aot false} metro.system
   )

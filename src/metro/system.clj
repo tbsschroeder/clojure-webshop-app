@@ -1,4 +1,5 @@
 (ns metro.system
+  (:gen-class)
   (:require [com.stuartsierra.component :as component]
             [io.pedestal.http :as http]
             [metro.components.web.pedestal :as pedestal]
@@ -10,6 +11,7 @@
   {:env env
    ::http/routes routes/routes
    ::http/type :jetty
+   ::http/host (or (System/getenv "WEB_HOST") "localhost")
    ::http/port 8080
    ::http/resource-path "/public"})
 
@@ -20,7 +22,8 @@
 
    :db-config {:db       "clojure"
                :user     "clojure"
-               :password "clojure"}
+               :password "clojure"
+               :host      (or (System/getenv "DB_HOST") "localhost")}
 
    :db (component/using (postgres/new-database) [:db-config])
 

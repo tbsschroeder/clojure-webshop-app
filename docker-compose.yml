@@ -1,0 +1,25 @@
+version: '3.4'
+services:
+
+  db:
+    image: postgres:12-alpine
+    restart: always
+    expose:
+      - 5432
+    environment:
+      - "POSTGRES_PASSWORD=clojure"
+      - "POSTGRES_USER=clojure"
+      - "POSTGRES_DB=clojure"
+
+  clj:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - "DB_HOST=db"
+      - "WEB_HOST=0.0.0.0"
+    ports:
+      - "8080:8080"
+    command: lein run
+    depends_on:
+      - db

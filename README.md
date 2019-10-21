@@ -1,22 +1,41 @@
 # WebShop Application with Component
 
-This repository provides a small web-application consisting of a pedestal-service 
-and a database connection to persist items. These two components are composed in 
+This repository provides a small web-application consisting of a [pedestal](http://pedestal.io/)
+service and a database connection to persist items. These two components are composed in 
 a system with Stuart Sierra's [Component](https://github.com/stuartsierra/component) 
-library. The repo is based on [n2o's ToDo app](https://github.com/n2o/component-todo-app) 
+library. The repo is based on [n2o's ToDo app](https://github.com/n2o/component-todo-app).
+
+## Requirements
+
+Short and crisp: Always have [Docker](https://docs.docker.com/install/) installed.
+
+Should the app run your machine?
+* Yes: Please have [Leiningen](https://leiningen.org/#install) as build tool.
+* No: Then you will need [Docker Compose](https://docs.docker.com/compose/install/).
 
 ## Usage
 
-The production code runs with a postgres-database. You can create a database
-with the correct settings with this command:
+The code runs with a postgres database. You can create a database with correct
+settings with this command:
 
-    docker run --rm -e POSTGRES_PASSWORD=clojure -e POSTGRES_USER=clojure -e POSTGRES_DB=clojure -p 5432:5432 postgres:12-alpine
+    docker run --rm \
+        -e POSTGRES_PASSWORD=clojure \
+        -e POSTGRES_USER=clojure \
+        -e POSTGRES_DB=clojure \
+        -p 5432:5432 \
+        postgres:12-alpine
 
-Then start the system:
+Then run the system:
 
     lein run
 
-The service is then accessible under http://localhost:8080
+The service will be accessible under http://localhost:8080
+
+### No Clojure installed?
+
+No problem, please use :
+
+    docker-compose up
 
 ### Tests
 
@@ -26,8 +45,8 @@ There are two sample tests, which can be run with
 
 ### Helper
 
-You can run multiple helping tools like code formatting, linting, dependency 
-checker and code  analyzer via
+You can run multiple helping tools like code formatting, linting, interactive 
+dependency checker and code  analyzer via:
 
     lein cljfmt fix
     lein eastwood
@@ -39,10 +58,13 @@ checker and code  analyzer via
 ![sample](img/demo.png)
 
 ## License
+___
+*All images are under the copyright of METRO AG.*
+___
 
 The MIT License (MIT)
 
-Copyright © 2019 Dr. Tobias Schröder
+*Copyright © 2019 Dr. Tobias Schröder*
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in

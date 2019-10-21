@@ -8,7 +8,7 @@
    [:h1.center "Amazing Web Shop Application"]
    (blocks/button->checkout)
    [:hr {:style "margin: 2rem 0"}]
-   [:div.row.center {:style "margin: 0; padding-left: 1em;"}
+   [:div.row {:style "margin: 0; padding-left: 1em;"}
     (vec (conj (blocks/article->big-cards) :tbody))]))
 
 (defn checkout [request]
