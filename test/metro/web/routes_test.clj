@@ -16,6 +16,7 @@
                                                 (routes/url-for :greet))]
         (is (= 200 status))
         (is (= "Hello, world!" body))))))
+
 (deftest shop-test
   (testing "Main route should response the shop"
     (test/with-system [sut test/system]
@@ -25,9 +26,9 @@
                                                 (routes/url-for :index))]
         (is (= 200 status))
         (is (string/includes? body "Amazing Web Shop Application"))
-        (is (string/includes? body "Apple"))
-        (is (string/includes? body "➕"))
-        (is (string/includes? body "➖"))
+        (is (string/includes? body "Bacon"))
+        (is (string/includes? body "+"))
+        (is (string/includes? body "-"))
         (is (string/includes? body "Checkout"))))))
 
 (deftest checkout-test

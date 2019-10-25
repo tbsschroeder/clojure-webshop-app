@@ -20,12 +20,9 @@
     (kdb/default-connection nil)
     (assoc this :database nil)))
 
-(defn- new-test-db []
-  (map->TestDB {}))
-
 (def system
   (assoc (system/system :test)
-         :db (new-test-db)))  ;; Inject TestDB for testing
+         :db (map->TestDB {})))  ;; Inject TestDB for testing
 
 (defmacro with-system
   [[bound-var test-system] & body]
