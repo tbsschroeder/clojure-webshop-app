@@ -1,6 +1,7 @@
 (ns metro.components.web.views
   (:require [ring.util.response :as ring-resp]
             [metro.components.db.articles :as article]
+            [metro.components.web.api :as api]
             [metro.components.web.blocks :as blocks]))
 
 (defn shop [request]
@@ -25,10 +26,10 @@
   (article/dec! (:id form-params))
   (ring-resp/redirect "/"))
 
-(defn rem-article [{:keys [form-params]}]
-  (article/rem! (:id form-params))
-  (ring-resp/redirect "/checkout"))
+(defn rem-article [request]
+  (api/rem-article request)
 
+  (ring-resp/redirect "/checkout"))
 (defn respond-hello [request]
   (let [name (get-in request [:query-params :name])
         resp (cond (empty? name) "Hello, world!"

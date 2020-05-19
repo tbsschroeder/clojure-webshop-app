@@ -2,8 +2,8 @@
   (:gen-class)
   (:require [com.stuartsierra.component :as component]
             [io.pedestal.http :as http]
-            [metro.components.web.pedestal :as pedestal]
-            [metro.components.web.routes :as routes]
+            [metro.components.server.pedestal :as pedestal]
+            [metro.components.server.routes :as routes]
             [metro.components.db.postgres :as postgres]))
 
 (defn- build-service-map [env]

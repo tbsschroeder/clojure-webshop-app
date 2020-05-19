@@ -1,7 +1,7 @@
 (ns metro.components.web.blocks
-  (:require  [metro.components.db.articles :as article]
-             [ring.util.response :as ring-resp]
-             [hiccup.page :as hp]))
+  (:require [metro.components.db.articles :as article]
+            [ring.util.response :as ring-resp]
+            [hiccup.page :as hp]))
 
 (defn base-template [& body]
   (ring-resp/response
@@ -23,9 +23,9 @@
 
 (defn- amount-btn [action id class value]
   [:form.amount-article-form {:action action
-                             :method :POST}
-   [:input {:name "id"
-            :value id
+                              :method :POST}
+   [:input {:name   "id"
+            :value  id
             :hidden true}]
    [:input {:class (str "btn " class)
             :type  :submit
@@ -36,8 +36,8 @@
    [:div.input-group
     [:div.input-group-prepend
      (amount-btn "/article/dec" (:id article) "btn-danger" "-")]
-    [:input.form-control.input-number {:value (:count article)
-                                       :width "3em"
+    [:input.form-control.input-number {:value    (:count article)
+                                       :width    "3em"
                                        :disabled "true"}]
     [:div.input-group-append
      (amount-btn "/article/inc" (:id article) "btn-success" "+")]]])
@@ -46,27 +46,15 @@
   [:div.cat
    [:div.head
     [:div.face
-     [:div.stripes
-      [:div.top]
-      [:div.left]
-      [:div.right]]
-     [:div.eyes
-      [:div.left]
-      [:div.right]]
+     [:div.stripes [:div.top] [:div.left] [:div.right]]
+     [:div.eyes [:div.left] [:div.right]]
      [:div.nose]
      [:div.mouth]]
-    [:div.ears
-     [:div.left]
-     [:div.right]]]
+    [:div.ears [:div.left] [:div.right]]]
    [:div.suit
-    [:div.collar
-     [:div.top]]
-    [:div.arms
-     [:div.left]
-     [:div.right]]
-    [:div.paws
-     [:div.left]
-     [:div.right]]
+    [:div.collar [:div.top]]
+    [:div.arms [:div.left] [:div.right]]
+    [:div.paws [:div.left] [:div.right]]
     [:div.body]]
    [:div.tail]
    [:div.shadow]])

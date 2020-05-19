@@ -1,4 +1,4 @@
-version: '3.4'
+version: "3.4"
 services:
 
   db:
@@ -20,6 +20,6 @@ services:
       - "WEB_HOST=0.0.0.0"
     ports:
       - "8080:8080"
-    command: lein run
+    command: java -jar app.jar
     depends_on:
       - db

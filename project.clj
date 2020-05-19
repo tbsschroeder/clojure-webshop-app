@@ -1,23 +1,24 @@
 (defproject metro "0.0.1-SNAPSHOT"
   :description "FIXME: write description"
-  :url "http://example.com/FIXME"
+  :url "https://github.com/tbsschroeder/clojure-webshop-app"
   :license {:name "MIT"
             :url "https://opensouArce.org/licenses/MIT"}
   :dependencies [[org.clojure/clojure "1.10.1"]
+                 [org.clojure/data.json "1.0.0"]
 
                  ;; lifecycle
-                 [com.stuartsierra/component "0.4.0"]
+                 [com.stuartsierra/component "1.0.0"]
 
                  ;; http abstraction
-                 [ring/ring-core "1.7.1"]
+                 [ring/ring-core "1.8.1"]
 
                  ;; html in clojure
                  [hiccup "1.0.5"]
 
                  ;; database
-                 [org.clojure/java.jdbc "0.7.10"]
-                 [org.postgresql/postgresql "42.2.8"]
-                 [org.xerial/sqlite-jdbc "3.28.0"]
+                 [org.clojure/java.jdbc "0.7.11"]
+                 [org.postgresql/postgresql "42.2.12"]
+                 [org.xerial/sqlite-jdbc "3.31.1"]
                  [korma "0.4.3"]
 
                  ;; web server
