@@ -10,13 +10,15 @@
    (blocks/button->checkout)
    [:hr {:style "margin: 2rem 0"}]
    [:div.row {:style "margin: 0; padding-left: 1em;"}
-    (vec (conj (blocks/article->big-cards) :tbody))]))
+    (vec (conj (blocks/article->big-cards) :tbody))]
+   (blocks/text->pizza)))
 
 (defn checkout [request]
   (blocks/base-template
    [:h1.center "Checkout"]
    (blocks/checkout-table)
-   (blocks/button->buy-more)))
+   (blocks/button->buy-more)
+   (blocks/text->pizza)))
 
 (defn inc-article [{:keys [form-params]}]
   (article/inc! (:id form-params))

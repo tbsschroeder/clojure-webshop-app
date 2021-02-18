@@ -102,7 +102,7 @@
        [:th "Remove"]]]
      (vec (conj (article->checkout) :tbody))]
     [:div
-     [:h2.text-warning "Empty shopping cart! Manager cat is not amused!"]
+     [:h2.text-warning.center "Empty shopping cart! Manager cat is not amused!"]
      (🐱)]))
 
 (defn button->checkout []
@@ -120,3 +120,7 @@
    [:img.buy-more-btn-img {:src "img/shopping-cart.svg"
                            :alt "cart"}]
    "Buy More"])
+
+(defn text->pizza []
+  [:p.center
+   "Made with \uD83C\uDF55 in Düsseldorf"])
