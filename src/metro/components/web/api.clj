@@ -15,7 +15,7 @@
   (article/rem! (:id form-params))
   (ring-resp/response ""))
 
-(defn basket [request]
+(defn basket [_]
   {:status 200
    :headers {"Content-Type" "application/json"}
    :body (json/write-str (article/query-all-with-count))})

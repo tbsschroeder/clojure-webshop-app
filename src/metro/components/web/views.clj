@@ -4,7 +4,7 @@
             [metro.components.web.api :as api]
             [metro.components.web.blocks :as blocks]))
 
-(defn shop [request]
+(defn shop [_]
   (blocks/base-template
    [:h1.center "Amazing Web Shop Application"]
    (blocks/button->checkout)
@@ -13,7 +13,7 @@
     (vec (conj (blocks/article->big-cards) :tbody))]
    (blocks/text->pizza)))
 
-(defn checkout [request]
+(defn checkout [_]
   (blocks/base-template
    [:h1.center "Checkout"]
    (blocks/checkout-table)

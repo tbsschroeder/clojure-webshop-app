@@ -29,5 +29,5 @@
 
    :web (component/using (pedestal/new-pedestal) [:db :service-map])))
 
-(defn -main [& args]
+(defn -main [& _]
   (component/start (system {})))
