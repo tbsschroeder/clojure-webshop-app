@@ -9,19 +9,19 @@
    :headers {"Content-Type" "application/json"}
    :body (json/write-str (sort-by :title (article/query-all)))})
 
-(defn inc-article [{:keys [form-params]}]
-  (article/inc! (:id form-params))
-  (all-article ""))
-
-(defn dec-article [{:keys [form-params]}]
-  (article/dec! (:id form-params))
-  (all-article ""))
-
-(defn rem-article [{:keys [form-params]}]
-  (article/rem! (:id form-params))
-  (all-article ""))
-
 (defn basket [_]
   {:status 200
    :headers {"Content-Type" "application/json"}
    :body (json/write-str (article/query-all-with-count))})
+
+(defn inc-article [{:keys [form-params]}]
+  (article/inc! (:id form-params))
+  (basket ""))
+
+(defn dec-article [{:keys [form-params]}]
+  (article/dec! (:id form-params))
+  (basket ""))
+
+(defn rem-article [{:keys [form-params]}]
+  (article/rem! (:id form-params))
+  (basket ""))
