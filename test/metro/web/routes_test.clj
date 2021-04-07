@@ -50,6 +50,7 @@
                                            :post
                                            (routes/url-for :inc-article))]
         (is (= 302 status))))))
+
 (deftest decrement-test
   (testing "Post to decrement will forward to main page"
     (test/with-system [sut test/system]
