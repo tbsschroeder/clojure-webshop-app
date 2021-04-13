@@ -1,11 +1,9 @@
 (ns metro.web.routes-test
   (:require [io.pedestal.test :refer [response-for]]
-            [metro.components.db.articles :as article]
             [clojure.test :refer [deftest is are testing]]
             [clojure.string :as string]
-            [metro.components.web.routes :as routes]
-            [metro.system-test :as test]
-            [clojure.string :as string]))
+            [metro.components.server.routes :as routes]
+            [metro.system-test :as test]))
 
 (deftest greeting-test
   (testing "Greeting route should print typical hello world."

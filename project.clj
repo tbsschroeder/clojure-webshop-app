@@ -11,7 +11,6 @@
 
                  ;; http abstraction
                  [ring/ring-core "1.8.1"]
-                 [ring-cors/ring-cors "0.1.13"]
 
                  ;; html in clojure
                  [hiccup "1.0.5"]

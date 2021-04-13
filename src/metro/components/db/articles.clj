@@ -18,11 +18,20 @@
                                  :image       image
                                  :count       count})))
 
+(defn add-with-id! [id title description category image count]
+  (kc/insert article (kc/values {:id          id
+                                 :title       title
+                                 :description description
+                                 :category    category
+                                 :image       image
+                                 :count       count})))
+
 (defn delete! [id]
   (kc/delete article (kc/where {:id id})))
 
-(defn get-count! [id]
-  (kc/select article (kc/fields :count) (kc/where {:id id})))
+; not working right now
+;(defn get-count! [id]
+;  (kc/select article (kc/fields :count) (kc/where {:id id})))
 
 (defn inc! [id]
   (kc/exec-raw (format "UPDATE articles SET count = count + 1 WHERE id = %s" id)))
@@ -35,6 +44,11 @@
 
 (defn query-all []
   (kc/select article))
+
+(defn query-article [id]
+  (kc/select article (kc/where {:id (int id)}))
+  ;(first (filter #(= (:id %) (int id)) (query-all)))
+  )
 
 (defn query-all-with-count []
   (kc/select article (kc/where (> :count 0))))

@@ -29,14 +29,11 @@
   ;; Passing components to the main system
   (component/system-map
    :service-map (build-service-map env)
-
    :db-config {:db       "clojure"
                :user     "clojure"
                :password "clojure"
                :host      (or (System/getenv "DB_HOST") "localhost")}
-
    :db (component/using (postgres/new-database) [:db-config])
-
    :web (component/using (pedestal/new-pedestal) [:db :service-map])))
 
 (defn -main [& _]

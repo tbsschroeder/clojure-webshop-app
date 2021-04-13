@@ -3,8 +3,8 @@
             [io.pedestal.test :refer [response-for]]
             [com.stuartsierra.component :as component]
             [clojure.test :refer [deftest is are testing]]
-            [metro.system :as system]
             [korma.db :as kdb]
+            [metro.system :as system]
             [metro.components.db.articles :as articles]))
 
 (defrecord TestDB [db-config database]
@@ -37,5 +37,5 @@
   (get-in system [:web :service ::http/service-fn]))
 
 (comment
-  (def mytestsystem (component/start system))
-  mytestsystem)
+  (def my-test-system (component/start system))
+  my-test-system)

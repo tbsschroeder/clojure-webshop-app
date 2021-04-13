@@ -20,6 +20,7 @@
     ["/article/inc" :post (conj common-interceptors `views/inc-article) :route-name :inc-article]
     ["/article/dec" :post (conj common-interceptors `views/dec-article) :route-name :dec-article]
     ["/article/rem" :post (conj common-interceptors `views/rem-article) :route-name :rem-article]
+    ["/api/greet" :get api/respond-hello :route-name :api-greet]
     ["/api/article/all" :get (conj common-interceptors `api/all-article) :route-name :api-all-article]
     ["/api/article/inc" :post (conj common-interceptors `api/inc-article) :route-name :api-inc-article]
     ["/api/article/dec" :post (conj common-interceptors `api/dec-article) :route-name :api-dec-article]
